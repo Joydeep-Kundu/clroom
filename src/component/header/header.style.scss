@@ -1,0 +1,16 @@
+.div-header {
+    background-color: rgb(17, 35, 61);
+    font-size: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.header {
+    cursor: pointer;
+
+    color: #f0ffff;
+    display: inline-block;
+
+}

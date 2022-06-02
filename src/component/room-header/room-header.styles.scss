@@ -1,0 +1,23 @@
+.room-header {
+    background: blueviolet;
+    padding: 3% 4%;
+    font-size: 1.5em;
+    margin: 1.7% 18%;
+    border-radius: 30px;
+
+    h1 {
+        text-align: center;
+        font-size: 1.5 em;
+        margin: 10px;
+        text-decoration: underline;
+    }
+
+    p {
+        margin: 10px;
+    }
+
+    span {
+        display: inline-block;
+        margin: 10px;
+    }
+}
