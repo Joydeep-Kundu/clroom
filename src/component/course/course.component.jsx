@@ -9,14 +9,12 @@ import { useSelector, useDispatch } from "react-redux";
 import CustomButton from "../../component/custom-button/custom-button.component";
 import Header from "../../component/header/header.component";
 import { CardList } from '../card-list/card-list.component';
+
 const form1 = {
     cname: '',
     cdis: '',
 }
 
-const form2 = {
-    cid: '',
-}
 
 const Course = () => {
     const nav = useNavigate();
@@ -28,20 +26,28 @@ const Course = () => {
 
 
     const [si, ssi] = useState(sign);
+    //state
     const [uemail, setemail] = useState(semail);
     const [form1fields, setform1] = useState(form1);
     const { cname, cdis } = form1fields;
-
+    const [form2res, setform2res] = useState(true);
 
     const [userd, setuser] = useState([]);
     const [role, setrole] = useState('true');
-    const [fm2, setfm2] = useState(form2);
-    const { cid, email } = fm2;
+    const [form2, setform2] = useState('')
     const [courses, setcourses] = useState([]);
+    const [course1, setcourse1] = useState([]);
 
-
+    //style
+    let p = document.querySelector('.join p');
 
     console.log(semail);
+    //useeffect
+    useEffect(() => {
+        fetch(`http://localhost:5000/getjoins/${uemail}`)
+            .then((res) => res.json())
+            .then((data) => setcourse1(data));
+    }, [])
     useEffect(() => {
         fetch(`http://localhost:5000/coursedis/${semail}`)
             .then((res) => res.json())
@@ -98,12 +104,48 @@ const Course = () => {
     const join = () => {
         let jn = document.querySelector('.join');
         jn.classList.toggle('dis');
+        p.style.display = 'none';
+        setform2('')
     }
-    const form2sumit = (e) => {
-        e.preventDefault()
-    }
+    const getJoins = async () => {
+        try {
 
-    const sd = () => {
+            const res2 = await fetch(`http://localhost:5000/getjoins/${uemail}`)
+            const data2 = await res2.json();
+            setcourse1(data2);
+        } catch (err) {
+            console.log(err);
+        }
+    }
+    const form2submit = async (e) => {
+        e.preventDefault();
+        const body = { cid: form2, uemail: uemail }
+        console.log('form2 -', body);
+        let res1 = await fetch(`http://localhost:5000/getjoins/${uemail}`)
+        let data1 = await res1.json()
+        console.log(data1);
+        data1.map((d) => {
+            if (d.c_id !== form2) {
+                p.style.display = 'block'
+            }
+        })
+
+        try {
+            const res = await fetch('http://localhost:5000/joins', {
+                method: 'POST',
+                headers: { 'content-type': 'application/json' },
+                body: JSON.stringify(body)
+            })
+        } catch (err) {
+            console.log(err)
+        }
+        setform2('adfasd')
+        p.style.display = 'none';
+        join();
+        getJoins();
+    }
+    const handleChange2 = (e) => {
+        setform2(e.target.value)
     }
 
     return (
@@ -132,10 +174,11 @@ const Course = () => {
                 </div>
                 <div className="join dis">
                     <h3>Join Course</h3>
-                    <form action="#" onSubmit={form2sumit}>
-                        <FormInput type="text" value={cid}
+                    <p className='dis' >wrong course id</p>
+                    <form action="#" onSubmit={form2submit}>
+                        <FormInput type="text" value={form2}
                             name='cid'
-                            handleChange={handleChange}
+                            handleChange={handleChange2}
                             label='Enter Course id'
                             required
                         />
@@ -143,8 +186,9 @@ const Course = () => {
                     </form>
 
                 </div>
-                <div onClick={sd}>
+                <div>
                     <CardList data={courses} />
+                    <CardList data={course1} />
                 </div>
             </div >
         </div>

@@ -26,4 +26,13 @@ $sub-color: grey;
         background-color: aliceblue;
         color: black;
     }
+
+    #select {
+        margin: 0 0;
+        border: none;
+        border-bottom: 1px solid black;
+        padding: 12px 10px;
+        width: 100%;
+        background-color: rgb(255, 255, 255);
+    }
 }

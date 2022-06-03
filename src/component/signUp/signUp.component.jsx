@@ -74,7 +74,7 @@ const SignUp = () => {
                     label='Email'
                     required
                 />
-                <select value={role} onChange={selectChange}>
+                <select value={role} id='select' onChange={selectChange}>
                     <option value='student'>Student</option>
                     <option value='teacher'>Teacher</option>
                 </select>

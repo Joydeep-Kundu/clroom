@@ -114,7 +114,7 @@ app.get('/getcomment/:id', async (req, res) => {
     console.log('commment', id);
     try {
         const getcommet = await pool.query(
-            "SELECT * FROM comment WHERE c_id=$1", [id]
+            "SELECT * FROM comment WHERE c_id=$1 ORDER BY cm_d DESC,cm_t DESC", [id]
         )
         res.json(getcommet.rows);
         console.log('get comment req')
@@ -122,8 +122,55 @@ app.get('/getcomment/:id', async (req, res) => {
     } catch (err) {
         console.log(err)
     }
-})
+});
+app.post('/joins', async (req, res) => {
+    let { cid, uemail } = req.body;
+    console.log('joins', cid, uemail);
+    try {
+        let joins = await pool.query(
+            "INSERT INTO joins (u_email,c_id) VALUES ($1,$2) ", [uemail, cid]
+        )
+        res.json(joins.rows);
+    } catch (err) {
+        console.log(err)
+    }
+});
+app.get('/getjoins/:id', async (req, res) => {
+    let { id } = req.params;
+    try {
+        let getJoin = await pool.query(
+            'select * from joins,course where joins.c_id=course.c_id and joins.u_email=$1', [id]
+        )
+        res.json(getJoin.rows);
 
+    } catch (err) {
+        console.log(err)
+    }
+})
+app.get('/getjoin/:id', async (req, res) => {
+    let { id } = req.params;
+    try {
+        let getJoin = await pool.query(
+            'select * from joins where u_email=$1', [id]
+        )
+        res.json(getJoin.rows);
+
+    } catch (err) {
+        console.log(err)
+    }
+})
+app.get('getpeoplestudent/:id', async (req, res) => {
+    let { id } = req.params;
+    try {
+        let getPeopleStudent = await pool.query(
+            'select * from joins,user where joins.u_email=users.u_email and joins.c_id=$1', [id]
+        )
+        res.joins(getPeopleStudent.rows)
+    } catch (err) {
+        console.log(err)
+    }
+}
+)
 app.listen(5000, () => {
     console.log('server is listening to port 5000');
 })

@@ -28,7 +28,7 @@ CREATE TABLE document(
 );
 CREATE TABLE comment(
     cm_d date,
-    cm VARCHAR;
+    cm VARCHAR,
     cm_t time,
     c_id VARCHAR,
     cm_email VARCHAR,
@@ -39,3 +39,14 @@ CREATE TABLE comment(
     REFERENCES course(c_id),
     PRIMARY KEY(cm_d,cm_t,c_id,cm_email)
 );
+
+CREATE TABLE joins(
+    u_email VARCHAR,
+    c_id VARCHAR,
+    CONSTRAINT jnk
+    FOREIGN KEY (u_email)
+    REFERENCES users(u_email),
+    FOREIGN KEY (c_id)
+    REFERENCES course(c_id),
+    PRIMARY KEY (c_id,u_email)
+)

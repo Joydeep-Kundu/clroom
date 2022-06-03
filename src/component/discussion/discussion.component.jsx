@@ -22,7 +22,7 @@ const Discusion = ({ room, user }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         let today = new Date;
-        let day = today.getDate();
+        let day = today.getDate() + 1;
         let month = today.getMonth();
         let year = today.getFullYear();
         let sec = today.getSeconds();
@@ -54,6 +54,7 @@ const Discusion = ({ room, user }) => {
         setcomment(value);
         console.log(value);
     }
+
 
     return (
         <div className='discussion'>
