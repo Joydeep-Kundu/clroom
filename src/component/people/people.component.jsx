@@ -1,18 +1,32 @@
 import { useState, useEffect } from 'react';
+import StudentCardList from '../student-cardlist/studentcardlist.component';
+
 import './people.styles.scss';
 
 
 
-const People = ({ room }) => {
+const People = ({ room, other }) => {
     //state
-    [peoples, setpeople] = useState([]);
+    const [peoples, setpeoples] = useState([]);
     //effect
+    useEffect(() => {
+        fetch(`http://localhost:5000/getpeoplestudent/${room}`)
+            .then((res) => res.json())
+            .then((data) => setpeoples(data))
+    }, [])
+    console.log(room)
+    console.log(peoples)
 
     return (
         <div className='people'>
-            <h2>p</h2>
+            <h2>teacher</h2>
+            <div className='teacher'>
+                <h3>{other.u_name}</h3>
+                <span>{other.owner_e}</span>
+            </div>
             <div>
-                daf
+                <h3>Student</h3>
+                <StudentCardList students={peoples} />
             </div>
         </div>
     )

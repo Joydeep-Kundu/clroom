@@ -159,13 +159,15 @@ app.get('/getjoin/:id', async (req, res) => {
         console.log(err)
     }
 })
-app.get('getpeoplestudent/:id', async (req, res) => {
+app.get('/getpeoplestudent/:id', async (req, res) => {
     let { id } = req.params;
+    console.log(id);
     try {
         let getPeopleStudent = await pool.query(
-            'select * from joins,user where joins.u_email=users.u_email and joins.c_id=$1', [id]
+            'select * from joins,users where joins.u_email=users.u_email and joins.c_id=$1', [id]
         )
-        res.joins(getPeopleStudent.rows)
+        res.json(getPeopleStudent.rows);
+        console.log('get people student req')
     } catch (err) {
         console.log(err)
     }

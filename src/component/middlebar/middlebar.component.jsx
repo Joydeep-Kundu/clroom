@@ -5,13 +5,13 @@ import Discusion from "../discussion/discussion.component";
 
 import './middlebar.styles.scss';
 
-const Middlebar = ({ room, user }) => {
-    console.log(room, user);
+const Middlebar = ({ room, user, other }) => {
+    console.log('room', room, user);
 
     return (
         <div className="middlebar">
             <Discusion room={room} user={user} />
-            <People />
+            <People room={room} other={other} />
             <Assignment />
         </div>
     )

@@ -31,7 +31,7 @@ const Room = () => {
             <div className="bar">
                 <div />
                 <SideBarLeft />
-                <Middlebar room={room} user={user} />
+                <Middlebar room={room} user={user} other={scourse} />
                 <div />
             </div>
         </div>
