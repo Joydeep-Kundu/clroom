@@ -16,9 +16,8 @@ const Card = (props) => {
     }
     return (
         <div className="card-container" onClick={cardData} >
-            <h1>{props.datas.c_name}</h1>
+            <h2>{props.datas.c_name}</h2>
             <p>{props.datas.c_dis}</p>
-            <p>{props.datas.c_id}</p>
             <p>{props.datas.owner_e}</p>
         </div>
 

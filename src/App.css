@@ -1,3 +1,29 @@
-html {
+@import url('https://fonts.googleapis.com/css?family=Exo:400,700');
+
+/* html {
     background-color: rgb(235, 235, 235);
+} */
+
+
+body {
+    font-family: 'Exo', sans-serif;
+
+    background: linear-gradient(-45deg, white, rgb(186, 39, 149), blue);
+    background-size: 400% 400%;
+    animation: gradient 10s ease infinite;
+    height: 100vh;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }

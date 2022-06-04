@@ -9,7 +9,6 @@ const Discusion = ({ room, user }) => {
     //state
     let [comment, setcomment] = useState('');
     let [dcomment, setdcomment] = useState([]);
-
     //effect
     useEffect(() => {
         fetch(`http://localhost:5000/getcomment/${room}`)
@@ -54,6 +53,7 @@ const Discusion = ({ room, user }) => {
         setcomment(value);
         console.log(value);
     }
+
 
 
     return (
