@@ -153,7 +153,7 @@ const Course = () => {
 
             <Header />
             <div className="course-page">
-                {role ? (<h2 className="crejoin" onClick={join} >Join Classroom</h2>) : (<h2 className="crejoin" onClick={create}>Create Classroom</h2>)}
+                {role ? (<h2 className="crejoin" onClick={join} >Join Course</h2>) : (<h2 className="crejoin" onClick={create}>Create Course</h2>)}
                 <div className="create dis">
                     <h3>Add course</h3>
                     <form action="#" onSubmit={handleSubmit}>

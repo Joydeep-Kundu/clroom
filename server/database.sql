@@ -49,4 +49,4 @@ CREATE TABLE joins(
     FOREIGN KEY (c_id)
     REFERENCES course(c_id),
     PRIMARY KEY (c_id,u_email)
-)
+);
