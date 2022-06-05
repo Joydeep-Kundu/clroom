@@ -171,8 +171,12 @@ app.get('/getpeoplestudent/:id', async (req, res) => {
     } catch (err) {
         console.log(err)
     }
-}
-)
+})
+app.delete('/deletecomment/:id', async (req, res) => {
+    let { id } = req.params;
+})
+
+
 app.listen(5000, () => {
     console.log('server is listening to port 5000');
 })

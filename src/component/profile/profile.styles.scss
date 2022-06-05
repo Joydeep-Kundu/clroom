@@ -1,10 +1,31 @@
 .profile {
     position: relative;
-    top: 250px;
-    margin: 0 20%;
+    top: 180px;
+    margin: 0 30%;
     min-height: 35vh;
     background-color: aliceblue;
     text-align: center;
-    padding: 30px 40px;
+    padding: 30px 30px;
     border-radius: 20px;
+
+    button {
+        display: inline-block;
+    }
+
+    #sign-out {
+        color: black;
+        margin: 20px 0;
+        padding: 10px 65px;
+        border-radius: 0;
+        border: 1px solid black;
+        font-size: 1.5em;
+        font-weight: 600;
+        background: white;
+
+        &:hover {
+            color: white;
+            background: black;
+        }
+    }
+
 }

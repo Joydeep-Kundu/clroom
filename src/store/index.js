@@ -7,6 +7,10 @@ const redu = (state = { sign: false, email: '', course: '' }, action) => {
     if (action.type === 'course') {
         return { ...state, course: action.payload, sign: true }
     }
+    if (action.type == 'signout') {
+        return { sign: false, email: '', course: '' }
+    }
+
 
     return state;
 }

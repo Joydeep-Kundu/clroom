@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import './card.style.css';
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -7,6 +7,10 @@ const Card = (props) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const dis = useSelector((state) => state.course)
+
+    //state
+    const [check, setCheck] = useState();
+    //function
 
     const cardData = () => {
         dispatch({

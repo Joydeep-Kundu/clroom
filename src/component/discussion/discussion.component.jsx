@@ -72,7 +72,7 @@ const Discusion = ({ room, user }) => {
                 </form>
             </div>
             <div>
-                <CommentCardList dcomment={dcomment} />
+                <CommentCardList dcomment={dcomment} user={user} />
             </div>
         </div>
     )

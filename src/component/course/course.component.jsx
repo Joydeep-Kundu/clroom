@@ -187,8 +187,8 @@ const Course = () => {
 
                 </div>
                 <div>
-                    <CardList data={courses} />
-                    <CardList data={course1} />
+                    <CardList data={courses} user={uemail} />
+                    <CardList data={course1} user={uemail} />
                 </div>
             </div >
         </div>
