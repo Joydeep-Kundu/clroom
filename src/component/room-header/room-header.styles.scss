@@ -2,7 +2,7 @@
     // background: #84d2f6;
     font-family: 'Exo', sans-serif;
 
-    background: linear-gradient(45deg, rgb(25, 24, 24), rgb(186, 39, 149), blue);
+    background: linear-gradient(45deg, rgb(246, 148, 233), rgb(217, 213, 20), rgb(123, 232, 232));
     background-size: 400% 400%;
     animation: gradient 15s ease infinite;
     background-repeat: no-repeat;
@@ -46,4 +46,14 @@
         margin: 10px;
         color: white;
     }
+
+    div {
+        display: inline-block;
+        background: url("../233-2338164_back-transparent-background-back-icon-png-png-download.png");
+        width: 35px;
+        height: 35px;
+        background-size: cover;
+        border-radius: 50%;
+    }
+
 }

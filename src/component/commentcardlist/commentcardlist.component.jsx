@@ -4,12 +4,13 @@ import './commentcardlist.styles.scss';
 
 
 const CommentCardList = (props) => {
-    const { dcomment, user } = props;
-    console.log('comment card list=', dcomment);
+    const { dcomment, user, room, rend } = props;
+
+    console.log('comment card list=', rend);
     return (
         <div className='commentcardlist'>
             {
-                dcomment.map((data) => (<CommentCard data={data} user={user} />))
+                dcomment.map((data) => (<CommentCard data={data} user={user} room={room} rend={rend} />))
             }
         </div>
     )

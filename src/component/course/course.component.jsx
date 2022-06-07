@@ -9,6 +9,7 @@ import { useSelector, useDispatch } from "react-redux";
 import CustomButton from "../../component/custom-button/custom-button.component";
 import Header from "../../component/header/header.component";
 import { CardList } from '../card-list/card-list.component';
+import TeacherCardList from '../teacher card list/card-list.component';
 
 const form1 = {
     cname: '',
@@ -187,7 +188,7 @@ const Course = () => {
 
                 </div>
                 <div>
-                    <CardList data={courses} user={uemail} />
+                    <TeacherCardList data={courses} user={uemail} />
                     <CardList data={course1} user={uemail} />
                 </div>
             </div >

@@ -14,14 +14,26 @@ const Discusion = ({ room, user }) => {
         fetch(`http://localhost:5000/getcomment/${room}`)
             .then((res) => res.json())
             .then((data) => setdcomment(data))
-    }, [])
+    }, [room])
     console.log(dcomment)
 
     //func
+    const rend = () => {
+        console.log('render')
+        try {
+            fetch(`http://localhost:5000/getcomment/${room}`)
+                .then((res) => res.json())
+                .then((data) => setdcomment(data))
+
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         let today = new Date;
-        let day = today.getDate() + 1;
+        let day = today.getDate();
         let month = today.getMonth();
         let year = today.getFullYear();
         let sec = today.getSeconds();
@@ -40,9 +52,7 @@ const Discusion = ({ room, user }) => {
             });
             console.log(res);
             setcomment('');
-            let res2 = await fetch(`http://localhost:5000/getcomment/${room}`);
-            let data = await res2.json();
-            setdcomment(data)
+            rend();
         } catch (err) {
             console.log(err);
 
@@ -53,6 +63,7 @@ const Discusion = ({ room, user }) => {
         setcomment(value);
         console.log(value);
     }
+
 
 
 
@@ -72,7 +83,7 @@ const Discusion = ({ room, user }) => {
                 </form>
             </div>
             <div>
-                <CommentCardList dcomment={dcomment} user={user} />
+                <CommentCardList dcomment={dcomment} user={user} room={room} rend={rend} />
             </div>
         </div>
     )

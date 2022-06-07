@@ -68,7 +68,7 @@ app.get('/dis/:id', async (req, res) => {
 app.post('/coursepost', async (req, res) => {
     let body = req.body;
     cid = Math.random() * 0.3;
-    let { cname, cdis, cowener } = body;
+    let { cname, cdis, cowner } = body;
     console.log(cowener, cname, cdis, em);
     try {
         const course = await pool.query(
@@ -172,8 +172,34 @@ app.get('/getpeoplestudent/:id', async (req, res) => {
         console.log(err)
     }
 })
-app.delete('/deletecomment/:id', async (req, res) => {
+app.delete('/deletecomment', async (req, res) => {
+    let { cmemail, cid, cmt, cmd } = req.body;
+    console.log(cmemail, cid, cmt, cmd)
+    try {
+        const deleteComment = pool.query(
+            "DELETE FROM comment WHERE c_id=$1 and cm_email=$2 and cm_d=$3 and cm_t=$4",
+            [cid, cmemail, cmd, cmt]
+        )
+        console.log('delete comment')
+
+    } catch (err) {
+        console.log(err);
+    }
+})
+app.put('/changepassword/:id', async (req, res) => {
     let { id } = req.params;
+    let { password } = req.body;
+    console.log('change', id, password)
+    try {
+        let changePassword = await pool.query(
+            'UPDATE users SET u_password=$1 WHERE u_email=$2',
+            [password, id]
+        )
+        res.json(changePassword.rows);
+        console.log('change password')
+    } catch (err) {
+        console.log(err)
+    }
 })
 
 

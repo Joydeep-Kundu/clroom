@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import SignPage from './route/signpage/signpage.component';
 import ProfilePage from './route/profile-page/profile-page.component';
 

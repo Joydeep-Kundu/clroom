@@ -50,3 +50,4 @@ CREATE TABLE joins(
     REFERENCES course(c_id),
     PRIMARY KEY (c_id,u_email)
 );
+

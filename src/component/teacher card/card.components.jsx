@@ -3,7 +3,7 @@ import './card.style.scss';
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-const Card = (props) => {
+const TeacherCard = (props) => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const dis = useSelector((state) => state.course)
@@ -22,9 +22,8 @@ const Card = (props) => {
         <div className="card-container" onClick={cardData} >
             <h2>{props.datas.c_name}</h2>
             <p>{props.datas.c_dis}</p>
-            <p>{props.datas.owner_e}</p>
         </div>
 
     )
 }
-export default Card;
+export default TeacherCard;

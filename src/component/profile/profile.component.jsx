@@ -8,6 +8,9 @@ import { useNavigate } from 'react-router-dom';
 
 
 const Profile = () => {
+    //style
+    const cnfp = document.querySelector('.changepform');
+    //
     const dispatch = useDispatch();
     const navigate = useNavigate();
     //selector
@@ -36,15 +39,45 @@ const Profile = () => {
         dispatch({ type: 'signout' });
         navigate('/')
     }
+    const handlesubmit = async (e) => {
+        e.preventDefault();
+        if (password === cPassword) {
+            const body = { password: password }
+            try {
+                const res = await fetch(`http://localhost:5000/changepassword/${user}`, {
+                    method: 'PUT',
+                    headers: { 'content-type': 'application/json' },
+                    body: JSON.stringify(body)
+                });
+                setCPassword('');
+                setPassword('')
+                changePassword();
+
+            } catch (err) {
+                console.log(err);
+            }
+        }
+        else {
+            console.log('wrong')
+        }
+    }
+    const changePassword = () => {
+        cnfp.classList.toggle('dis');
+
+    }
+    const back = () => {
+        navigate('/course')
+    }
     return (
         <div className="profile">
+            <div id='back' onClick={back}></div>
             <h1>Profile</h1>
             <h2>Name : {profile.u_name}</h2>
             <p>Email : {profile.u_email}</p>
             <p>Role : {profile.u_role}</p>
             <div>
-                <p>Change Password</p>
-                <form action="">
+                <span id='cnfp' onClick={changePassword}>Change Password</span>
+                <form action="" onSubmit={handlesubmit} className='changepform dis'>
                     <FormInput type="text" value={password}
                         name='password'
                         handleChange={handleChange}
@@ -57,11 +90,11 @@ const Profile = () => {
                         label='Enter Confirm Password'
                         required
                     />
-                    <CustomButton>Change Password</CustomButton>
+                    <CustomButton type='submit'>Change Password</CustomButton>
                 </form>
-                <button id='sign-out' onClick={signOut}>Sign out</button>
-
             </div>
+            <button id='sign-out' onClick={signOut}>Sign out</button>
+
 
         </div>
     )
