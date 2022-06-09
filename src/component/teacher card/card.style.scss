@@ -2,8 +2,8 @@
     margin: 30px;
     display: flex;
     flex-direction: column;
-    background-color: #00bbf9;
-    border: 3px solid #0092fb;
+    background-color: #e4e3e2;
+    border: 3px solid #444647;
     border-radius: 5px;
     padding: 25px;
     cursor: pointer;
@@ -11,6 +11,11 @@
     backface-visibility: hidden;
     transform: translateZ(0);
     transition: transform 0.25 ease-out;
+
+    h2 {
+        text-align: center;
+        background-color: rgb(129, 119, 119);
+    }
 
 
 }

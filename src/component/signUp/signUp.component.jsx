@@ -88,7 +88,7 @@ const SignUp = () => {
                 <FormInput type="password" value={confirmPassword}
                     name='confirmPassword'
                     handleChange={handleChange}
-                    label='ConfirmPassword'
+                    label='Confirm Password'
                     required
                 />
 

@@ -12,7 +12,7 @@ const Middlebar = ({ room, user, other }) => {
         <div className="middlebar">
             <Discusion room={room} user={user} />
             <People room={room} other={other} />
-            <Assignment />
+            <Assignment room={room} user={user} other={other} />
         </div>
     )
 }

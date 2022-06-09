@@ -40,10 +40,9 @@ const CommentCard = ({ data, user, room, rend }) => {
     return (
 
         <div className='commentcard'>
-            <span>comment</span>
-            <p><span>date:{date} </span> <span>time:{data.cm_t} </span></p>
-            <p>{data.cm}</p>
-            <span>{data.cm_email}</span>
+            <p id='comment'> <span>{data.u_name}</span><span><span>date:{date} </span> <span>time:{data.cm_t} </span></span></p>
+            <p id='comment2'>{data.cm}</p>
+
             {/* {
                 check ? (<CustomButton onClick={() => {
                     deleteComment()

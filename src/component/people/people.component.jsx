@@ -19,7 +19,7 @@ const People = ({ room, other }) => {
 
     return (
         <div className='people'>
-            <h2>teacher</h2>
+            <h2>Teacher</h2>
             <div className='teacher'>
                 <h3>{other.u_name}</h3>
                 <span>{other.owner_e}</span>

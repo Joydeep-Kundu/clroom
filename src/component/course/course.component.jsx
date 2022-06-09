@@ -140,8 +140,7 @@ const Course = () => {
         } catch (err) {
             console.log(err)
         }
-        setform2('adfasd')
-        p.style.display = 'none';
+        setform2('')
         join();
         getJoins();
     }
@@ -175,12 +174,12 @@ const Course = () => {
                 </div>
                 <div className="join dis">
                     <h3>Join Course</h3>
-                    <p className='dis' >wrong course id</p>
+                    <p className='dis' >wrong course code!</p>
                     <form action="#" onSubmit={form2submit}>
                         <FormInput type="text" value={form2}
                             name='cid'
                             handleChange={handleChange2}
-                            label='Enter Course id'
+                            label='Enter Course Code'
                             required
                         />
                         <CustomButton type='submit'>Join</CustomButton>

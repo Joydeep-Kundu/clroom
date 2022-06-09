@@ -78,13 +78,13 @@ const Profile = () => {
             <div>
                 <span id='cnfp' onClick={changePassword}>Change Password</span>
                 <form action="" onSubmit={handlesubmit} className='changepform dis'>
-                    <FormInput type="text" value={password}
+                    <FormInput type="password" value={password}
                         name='password'
                         handleChange={handleChange}
                         label='Enter Password'
                         required
                     />
-                    <FormInput type="text" value={cPassword}
+                    <FormInput type="password" value={cPassword}
                         name='cpassword'
                         handleChange={handleChange2}
                         label='Enter Confirm Password'

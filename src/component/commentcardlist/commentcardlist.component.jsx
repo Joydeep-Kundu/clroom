@@ -6,7 +6,6 @@ import './commentcardlist.styles.scss';
 const CommentCardList = (props) => {
     const { dcomment, user, room, rend } = props;
 
-    console.log('comment card list=', rend);
     return (
         <div className='commentcardlist'>
             {

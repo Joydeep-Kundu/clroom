@@ -44,7 +44,7 @@ const SignIn = () => {
         }
 
     }
-
+    const p = document.querySelector('#wrong')
     const handleSubmit = (event) => {
         event.preventDefault();
         disall();
@@ -60,13 +60,13 @@ const SignIn = () => {
                     setFields({ email: '', password: '' });
                 }
                 l = 0;
-                console.log(password, 'wrong password');
+                p.style.display = 'block';
             }
 
         })
         if (l === 1) {
 
-            console.log('wrong email');
+            p.style.display = 'block';
         }
     };
 
@@ -76,6 +76,7 @@ const SignIn = () => {
             <h2>I already have an account</h2>
             <span>Sign in with your email and password</span>
             <form methode='post' action='#'>
+                <p id='wrong'>wrong email-id or password!</p>
                 <FormInput type="email" value={email}
                     name='email'
                     handleChange={handleChange}

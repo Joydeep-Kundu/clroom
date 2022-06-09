@@ -22,7 +22,7 @@ const Card = (props) => {
         <div className="card-container" onClick={cardData} >
             <h2>{props.datas.c_name}</h2>
             <p>{props.datas.c_dis}</p>
-            <p>{props.datas.owner_e}</p>
+            <p>{props.datas.u_name}</p>
         </div>
 
     )

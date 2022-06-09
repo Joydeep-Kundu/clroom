@@ -14,17 +14,34 @@ CREATE TABLE course(
     FOREIGN KEY(owner_e)
     REFERENCES users(u_email)
 );
-CREATE TABLE document(
-    d_d date,
-    d_T time,
+CREATE TABLE assignment(
+    a_d date,
+    assignment VARCHAR,
+    A_id VARCHAR,
+    a_T time,
     c_id VARCHAR,
-    u_email VARCHAR,
+    a_email VARCHAR,
     CONSTRAINT dk
-    FOREIGN KEY (u_email)
+    FOREIGN KEY (a_email)
     REFERENCES  users(u_email),
     FOREIGN KEY (c_id)
     REFERENCES course(c_id),
-    PRIMARY KEY (d_t,d_d,c_id,u_email)
+    PRIMARY KEY (A_id)
+    
+);
+
+CREATE TABLE submit(
+    A_id VARCHAR,
+    submit VARCHAR,
+    s_email VARCHAR,
+    s_d DATE,
+    s_t TIME,
+    CONSTRAINT sk
+    FOREIGN KEY (A_id)
+    REFERENCES assignment(A_id),
+    FOREIGN KEY (s_email)
+    REFERENCES users(u_email),
+    PRIMARY KEY (A_id,s_email,s_d,s_t)
 );
 CREATE TABLE comment(
     cm_d date,

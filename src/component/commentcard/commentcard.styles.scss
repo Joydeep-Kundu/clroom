@@ -1,6 +1,20 @@
 .commentcard {
-    padding: 10px 15px;
+    padding: 2px 15px;
     border-radius: 15px;
-    background-color: #3a86ff;
+    background-color: #85a1ce;
     margin: 30px 10px;
+}
+
+#comment {
+    margin: 5px;
+
+    display: flex;
+    justify-content: space-around;
+
+}
+
+#comment2 {
+    color: black;
+    padding: 10px 30px;
+    background: #b3bdcd;
 }

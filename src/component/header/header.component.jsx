@@ -35,7 +35,7 @@ const Header = () => {
                 <div className="logo">
 
                 </div>
-                <h1 className="header" onClick={root}>Digital Classroom</h1>
+                <h1 className="header" onClick={root}>DigitalClassRoom</h1>
             </div>
             {
                 sign1 ? (<span className="header" onClick={profile}>{userd.u_name}</span>) : (<span className="header" onClick={sign}>Sign in/Sign up</span>)

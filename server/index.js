@@ -69,7 +69,7 @@ app.post('/coursepost', async (req, res) => {
     let body = req.body;
     cid = Math.random() * 0.3;
     let { cname, cdis, cowner } = body;
-    console.log(cowener, cname, cdis, em);
+    console.log(cowner, cname, cdis, em);
     try {
         const course = await pool.query(
             "INSERT INTO course (c_name,c_id,c_dis,owner_e) VALUES ($1,$2,$3,$4)",
@@ -114,7 +114,7 @@ app.get('/getcomment/:id', async (req, res) => {
     console.log('commment', id);
     try {
         const getcommet = await pool.query(
-            "SELECT * FROM comment WHERE c_id=$1 ORDER BY cm_d DESC,cm_t DESC", [id]
+            "SELECT * FROM comment,users WHERE c_id=$1 and cm_email=u_email ORDER BY cm_d DESC,cm_t DESC", [id]
         )
         res.json(getcommet.rows);
         console.log('get comment req')
@@ -139,7 +139,7 @@ app.get('/getjoins/:id', async (req, res) => {
     let { id } = req.params;
     try {
         let getJoin = await pool.query(
-            'select * from joins,course where joins.c_id=course.c_id and joins.u_email=$1', [id]
+            'select * from joins,course,users where course.owner_e=users.u_email and joins.c_id=course.c_id and joins.u_email=$1', [id]
         )
         res.json(getJoin.rows);
 
